@@ -1,5 +1,7 @@
 # Repo starter notes
 
+Opinionated notes for modern Typescript development.
+
 ## Project initialization
 
 - Always use Nx to initialize a new project
