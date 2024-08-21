@@ -45,6 +45,7 @@ Opinionated notes for modern Typescript development.
 ## Backend
 
 - Use NestJS as a framework
+- Respect Zalando's [API First principles](https://opensource.zalando.com/restful-api-guidelines/)
 
 ## Testing
 
