@@ -1,1 +1,1 @@
-export * from './lib/lib-hook-store';
+export { SimplePage } from './features/hook-store-experiment';
