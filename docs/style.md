@@ -48,6 +48,11 @@ interface Bar {
 - Fields must be declared before methods
 - Every field and method should have an explicit access modifier
 
+## Interfaces
+
+- Do not prefix interface names with `I`. Instead, prefer prefixing implementations with relevant words,
+e.g `DynamoDbUserRepository`, `FakeUserRepository`.
+
 ## React components
 
 - Prefer the `function` keyword for top-level React components, eg:
