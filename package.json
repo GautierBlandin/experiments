@@ -13,7 +13,7 @@
     "@nx/eslint": "19.6.1",
     "@nx/eslint-plugin": "19.6.1",
     "@nx/jest": "19.6.1",
-    "@nx/js": "19.6.1",
+    "@nx/js": "^19.6.1",
     "@nx/nest": "^19.6.1",
     "@nx/node": "19.6.1",
     "@nx/playwright": "19.6.1",
@@ -72,6 +72,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
-    "valtio": "^1.13.2"
+    "valtio": "^1.13.2",
+    "zustand": "^4.5.5"
   }
 }
