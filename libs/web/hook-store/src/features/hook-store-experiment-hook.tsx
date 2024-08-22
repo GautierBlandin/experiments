@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Logger } from '../infrastructure/Logger';
 import { proxy, useSnapshot } from 'valtio';
+import { loggerSingleton } from '../infrastructure/ConsoleLogger';
 
 const state = proxy({ count: 0 });
 
@@ -9,7 +9,7 @@ export function useMyHook() {
     state.count++;
   };
 
-  const [logger] = useState(() => new Logger());
+  const [logger] = useState(() => loggerSingleton.get());
 
   const snap = useSnapshot(state);
 

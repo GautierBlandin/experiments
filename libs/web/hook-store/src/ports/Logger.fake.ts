@@ -1,4 +1,6 @@
-export class Logger {
+import { Logger } from './Logger';
+
+export class FakeLogger implements Logger {
   private messages: string[] = [];
 
   public log(message: string) {
