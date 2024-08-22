@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
-import { useMyHook } from './hook-store-experiment.hook';
 import { describe, it, expect } from 'vitest';
+import { useMyHook } from './hook-store-experiment';
 
 describe('useMyHook', () => {
   it('should initialize with count 0', () => {
