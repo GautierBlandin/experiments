@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import { Logger } from '../infrastructure/Logger';
+import { proxy, useSnapshot } from 'valtio';
+
+const state = proxy({ count: 0 });
 
 export function useMyHook() {
-  const [count, setCount] = useState(0);
+  const increment = () => {
+    state.count++;
+  };
 
   const [logger] = useState(() => new Logger());
 
+  const snap = useSnapshot(state);
+
   useEffect(() => {
-    logger.log('count is ' + count);
-    console.log(logger.getLogs());
-  }, [logger, count]);
+    logger.log('count is ' + snap.count);
+  }, [logger, snap.count]);
 
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  return { count, increment, logger };
+  return { state, increment, logger };
 }

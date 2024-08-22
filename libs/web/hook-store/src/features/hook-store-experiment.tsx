@@ -1,13 +1,15 @@
 import { useMyHook } from './hook-store-experiment-hook';
+import { useSnapshot } from 'valtio';
 
 export function SimplePage() {
-  const { count, increment } = useMyHook();
+  const { state, increment } = useMyHook();
+  const snap = useSnapshot(state);
 
   return (
     <div>
       <h1>Welcome to My Simple Page</h1>
       <p>This is a very simple root page for the React Frontend app.</p>
-      <p>Count: {count.toString()}</p>
+      <p>Count: {snap.count.toString()}</p>
       <button onClick={increment}>Increment</button>{' '}
     </div>
   );
