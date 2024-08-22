@@ -4,8 +4,12 @@ import { useMyHook } from './hook-store-experiment-hook';
 
 describe('useMyHook', () => {
   it('should initialize with count 0', () => {
-    const { result } = renderHook(() => useMyHook());
-    expect(result.current.state.count).toBe(0);
+    const {
+      result: {
+        current: { state },
+      },
+    } = renderHook(() => useMyHook());
+    expect(state.count).toBe(0);
   });
 
   it('should increment count when increment is called', async () => {
