@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@experiments/lib-hook-store": ["libs/web/hook-store/src/index.ts"]
+      "@experiments/lib-hook-store": ["libs/web/hook-store/src/index.ts"],
+      "@experiments/web-singleton": ["libs/web/singleton/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
