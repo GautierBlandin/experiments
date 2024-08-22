@@ -1,4 +1,4 @@
-import { useMyHook } from './hook-store-experiment-hook';
+import { useMyHook } from './valtio-store-experiment-hook';
 import { useSnapshot } from 'valtio';
 
 export function SimplePage() {

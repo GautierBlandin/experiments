@@ -1,6 +1,6 @@
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { useMyHook } from './hook-store-experiment-hook';
+import { useMyHook } from './valtio-store-experiment-hook';
 import { FakeLogger } from '../ports/Logger.fake';
 import { loggerSingleton } from '../infrastructure/ConsoleLogger';
 

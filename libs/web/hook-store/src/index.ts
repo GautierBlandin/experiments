@@ -1,1 +1,1 @@
-export { SimplePage } from './features/hook-store-experiment';
+export { SimplePage } from './features/valtio-store-experiment';
