@@ -1,17 +1,7 @@
 # Process
 
-The goal of this document is to outline my philosophy of software development.
-
-```ts
-describe('Process should')
-```
-
-```ts
-it('be repeatable')
-```
-
 What is time-consuming when developing software is hesitation. The bottleneck of software development is the discovery of requirements,
-and hesitation when writing implementation. A good Process should enable the developer to avoid having to hesitate, and separate the
+and hesitation when writing implementation. A good process should enable the developer to avoid having to hesitate, and separate the
 different concerns of the software development process.
 
 ## Content
