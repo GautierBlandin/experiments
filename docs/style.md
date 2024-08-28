@@ -70,6 +70,7 @@ export function MyComponent({ name }: MyComponentProps) {
 ## CSS
 
 - Use Tailwind CSS
+- Avoid using margins. See [this article](https://mxstbr.com/thoughts/margin) as to why
 
 ## Exports
 
