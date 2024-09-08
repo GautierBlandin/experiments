@@ -2,7 +2,7 @@ import { CenteredLayout } from '@experiments/shared-ui';
 import React from 'react';
 import { CounterController } from './counter.controller';
 
-export function Page() {
+export function ValtioPage() {
   return (
     <CenteredLayout>
       <CounterController />
