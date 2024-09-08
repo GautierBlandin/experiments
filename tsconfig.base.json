@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@experiments/lib-hook-store": ["libs/web/hook-store/src/index.ts"],
+      "@experiments/model-hook-state": ["libs/web/model-hook-state/src/index.ts"],
+      "@experiments/shared-ui": ["libs/web/shared/ui/src/index.ts"],
       "@experiments/web-singleton": ["libs/web/singleton/src/index.ts"]
     }
   },

@@ -1,21 +1,11 @@
-import { Route, Routes, Link } from 'react-router-dom';
-import { SimplePage } from '@experiments/lib-hook-store';
+import { Route, Routes } from 'react-router-dom';
+import { View } from '@experiments/model-hook-state';
 
 export function App() {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<SimplePage />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<View />} />
+    </Routes>
   );
 }
 
