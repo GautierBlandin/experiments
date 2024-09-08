@@ -1,1 +1,1 @@
-export * from './lib/page';
+export * from './lib/feature-counter-valtio/page';
