@@ -1,0 +1,9 @@
+{
+  "name": "complex-valtio-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/complex-valtio-feature/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project complex-valtio-feature --web",
+  "targets": {}
+}
