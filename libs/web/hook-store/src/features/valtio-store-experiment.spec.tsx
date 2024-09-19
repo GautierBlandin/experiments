@@ -8,6 +8,12 @@ describe('useCounter', () => {
     expect(result.current.count).toBe(0);
   });
 
+  it('should initialize getCount with 0', async () => {
+    const { result } = renderHook(() => useCounter());
+
+    expect(result.current.getCount()).toBe(0);
+  });
+
   it('should increment count when increment is called', async () => {
     const { result } = renderHook(() => useCounter());
 
@@ -17,6 +23,18 @@ describe('useCounter', () => {
 
     await waitFor(() => {
       expect(result.current.count).toBe(1);
+    });
+  });
+
+  it('should increment getCount when increment is called', async () => {
+    const { result } = renderHook(() => useCounter());
+
+    act(() => {
+      result.current.increment();
+    });
+
+    await waitFor(() => {
+      expect(result.current.getCount()).toBe(1);
     });
   });
 

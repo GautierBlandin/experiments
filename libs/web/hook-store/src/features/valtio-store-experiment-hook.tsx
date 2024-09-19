@@ -8,6 +8,10 @@ class Counter {
     this.count++;
   }
 
+  public getCount() {
+    return this.count;
+  }
+
   public doubled() {
     return this.count * 2;
   }
@@ -15,10 +19,11 @@ class Counter {
 
 export function useCounter() {
   const counterRef = useRef(proxy(new Counter()));
-  const { count, doubled } = useSnapshot(counterRef.current);
+  const { count, doubled, getCount } = useSnapshot(counterRef.current);
 
   return {
     count,
+    getCount,
     doubled,
     increment: () => {
       counterRef.current.increment();
