@@ -1,12 +1,22 @@
-import { CounterPresenter } from './counter.presenter';
+import { useRef } from 'react';
 import { proxy, useSnapshot } from 'valtio';
-import { useState } from 'react';
+
+class Counter {
+  public count = 0;
+
+  public increment() {
+    this.count++;
+  }
+}
 
 export function useCounter() {
-  const [counterPresenter] = useState(() => new CounterPresenter());
-  const [counterProxy] = useState(() => proxy(counterPresenter));
+  const counterRef = useRef(proxy(new Counter()));
+  const { count } = useSnapshot(counterRef.current);
 
-  const snap = useSnapshot(counterProxy);
-
-  return { count: snap.count, increment: () => counterProxy.increment() };
+  return {
+    count,
+    increment: () => {
+      counterRef.current.increment();
+    },
+  };
 }
