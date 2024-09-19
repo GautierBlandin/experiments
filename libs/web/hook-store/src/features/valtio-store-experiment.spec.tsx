@@ -19,4 +19,16 @@ describe('useCounter', () => {
       expect(result.current.count).toBe(1);
     });
   });
+
+  it('should double count when doubled is called', async () => {
+    const { result } = renderHook(() => useCounter());
+
+    act(() => {
+      result.current.increment();
+    });
+
+    await waitFor(() => {
+      expect(result.current.doubled()).toBe(2);
+    });
+  });
 });
