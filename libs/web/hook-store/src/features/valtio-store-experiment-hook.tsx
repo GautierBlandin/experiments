@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { proxy, useSnapshot } from 'valtio';
-import { loggerSingleton } from '../infrastructure/ConsoleLogger';
 
-const state = proxy({ count: 0 });
+class Counter {
+  public count = 0;
 
-export function useMyHook() {
-  const increment = () => {
-    state.count++;
+  public increment() {
+    this.count++;
+  }
+}
+
+export function useCounter() {
+  const counterRef = useRef(proxy(new Counter()));
+  const snap = useSnapshot(counterRef.current);
+
+  return {
+    count: snap.count,
+    increment: () => {
+      counterRef.current.increment();
+    },
   };
-
-  const [logger] = useState(() => loggerSingleton.get());
-
-  const snap = useSnapshot(state);
-
-  useEffect(() => {
-    logger.log('count is ' + snap.count);
-  }, [logger, snap.count]);
-
-  return { state, increment, logger };
 }
