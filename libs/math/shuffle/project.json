@@ -1,0 +1,9 @@
+{
+  "name": "math-shuffle",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/math/shuffle/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project math-shuffle --web",
+  "targets": {}
+}

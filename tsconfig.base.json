@@ -17,6 +17,7 @@
     "paths": {
       "@experiments/complex-valtio-feature": ["libs/web/complex-valtio-feature/src/index.ts"],
       "@experiments/lib-hook-store": ["libs/web/hook-store/src/index.ts"],
+      "@experiments/math-shuffle": ["libs/math/shuffle/src/index.ts"],
       "@experiments/model-hook-state": ["libs/web/model-hook-state/src/index.ts"],
       "@experiments/shared-ui": ["libs/web/shared/ui/src/index.ts"],
       "@experiments/shared-web-utils": ["libs/web/shared/utils/src/index.ts"],
