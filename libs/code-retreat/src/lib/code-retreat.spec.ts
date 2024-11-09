@@ -6,14 +6,7 @@ function countNeighbors(world: Grid, x: number, y: number): number {
     for (let j = y - 1; j < y + 2; j += 1) {
       switch (i) {
         case x:
-          switch (j) {
-            case -1:
-            case y:
-            case world.length:
-              break;
-            default:
-              count += world[i][j];
-          }
+          count += incrementWithJ(y, world, j, i);
           break;
         default:
           if (i < 0 || i >= world.length || j < 0 || j >= world[0].length) break;
@@ -22,6 +15,17 @@ function countNeighbors(world: Grid, x: number, y: number): number {
     }
   }
   return count;
+}
+
+function incrementWithJ(y: number, world: Grid, j: number, i: number): number {
+  switch (j) {
+    case -1:
+    case y:
+    case world.length:
+      return 0;
+    default:
+      return world[i][j];
+  }
 }
 
 type Grid = number[][];
