@@ -4,9 +4,20 @@ function countNeighbors(world: Grid, x: number, y: number): number {
   let count = 0;
   for (let i = x - 1; i < x + 2; i += 1) {
     for (let j = y - 1; j < y + 2; j += 1) {
-      if (i === x && j === y) continue;
-      if (i < 0 || i >= world.length || j < 0 || j >= world[0].length) continue;
-      count += world[i][j];
+      switch (i) {
+        case x:
+          switch (j) {
+            case y:
+              break;
+            default:
+              if (i < 0 || i >= world.length || j < 0 || j >= world[0].length) break;
+              count += world[i][j];
+          }
+          break;
+        default:
+          if (i < 0 || i >= world.length || j < 0 || j >= world[0].length) break;
+          count += world[i][j];
+      }
     }
   }
   return count;
