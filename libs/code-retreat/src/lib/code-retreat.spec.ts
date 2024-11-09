@@ -7,10 +7,11 @@ function countNeighbors(world: Grid, x: number, y: number): number {
       switch (i) {
         case x:
           switch (j) {
+            case -1:
             case y:
+            case world.length:
               break;
             default:
-              if (i < 0 || i >= world.length || j < 0 || j >= world[0].length) break;
               count += world[i][j];
           }
           break;
