@@ -1,113 +1,178 @@
-function nextWorld(world: Grid) {}
+function businessService(factory: number[][]): number[][] {
+  const dummyBuilderImpl: number[][] = Array.from({ length: factory.length }, () =>
+    Array.from({ length: factory[0].length }, () => 0)
+  );
 
-function countNeighbors(world: Grid, x: number, y: number): number {
-  let count = 0;
-  for (let i = x - 1; i < x + 2; i += 1) {
-    for (let j = y - 1; j < y + 2; j += 1) {
-      switch (i) {
-        case -1:
-        case world.length:
-          break;
-        case x:
-          switch (j) {
-            case y:
-              break;
-            default:
-              count += incrementWithJ(world, j, i);
-          }
-          break;
-        default:
-          count += incrementWithJ(world, j, i);
+  for (let executorService = 0; executorService < factory.length; executorService += 1) {
+    for (let defaultService = 0; defaultService < factory[0].length; defaultService += 1) {
+      const dummyObject = commonDataManager(factory, executorService, defaultService);
+      if (dummyObject === 3) {
+        dummyBuilderImpl[executorService][defaultService] = 1;
+      }
+      if (dummyObject === 2 && factory[executorService][defaultService] === 1) {
+        dummyBuilderImpl[executorService][defaultService] = 1;
       }
     }
   }
-  return count;
+
+  return dummyBuilderImpl;
 }
 
-function incrementWithJ(world: Grid, j: number, i: number): number {
-  switch (j) {
-    case -1:
-    case world.length:
-      return 0;
-    default:
-      return world[i][j];
+type CandidateCell = {
+  x: number;
+  y: number;
+  neighborCount: number;
+  isCurrentlyAlive: boolean;
+};
+
+type CandidateRecord = Record<number, Record<number, { neighborCount: number; isCurrentlyAlive: boolean }>>;
+
+function commonDataManager(builder: number[][], manager: number, common: number) {
+  let data = 0;
+  for (
+    let abstractUtilsExecutor = Math.max(manager - 1, 0);
+    abstractUtilsExecutor < Math.min(manager + 2, builder.length);
+    abstractUtilsExecutor += 1
+  ) {
+    for (
+      let builderUtils = Math.max(common - 1, 0);
+      builderUtils < Math.min(common + 2, builder[0].length);
+      builderUtils += 1
+    ) {
+      if (abstractUtilsExecutor === manager && builderUtils === common) continue;
+      data += builder[abstractUtilsExecutor][builderUtils];
+    }
   }
+
+  return data;
 }
 
-type Grid = number[][];
-
-// TDD mais pas trop de mauvaise foi
-// Etape 1: Count neighbors
-// Etape 2: Compute next grid
-
-describe('codeRetreat', () => {
-  it('returns 0 for an empty grid', () => {
+describe('businessService', () => {
+  it('does the cross', () => {
     expect(
-      countNeighbors(
-        [
-          [0, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0],
-        ],
-        0,
-        0
-      )
-    ).toBe(0);
+      businessService([
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 0],
+      ])
+    ).toEqual([
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 0, 0],
+    ]);
   });
 
-  it('returns 1 if there is one neighbour', () => {
+  it('does the cross again', () => {
     expect(
-      countNeighbors(
+      businessService([
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 0, 0],
+      ])
+    ).toEqual([
+      [0, 1, 0],
+      [0, 1, 0],
+      [0, 1, 0],
+    ]);
+  });
+
+  it('returns empty world from empty world', () => {
+    expect(
+      businessService([
+        [0, 0],
+        [0, 0],
+      ])
+    ).toEqual([
+      [0, 0],
+      [0, 0],
+    ]);
+  });
+
+  it('dies when it is alone', () => {
+    expect(businessService([[1]])).toEqual([[0]]);
+  });
+
+  it('stays alive', () => {
+    expect(
+      businessService([
+        [1, 1],
+        [1, 1],
+      ])
+    ).toEqual([
+      [1, 1],
+      [1, 1],
+    ]);
+  });
+
+  it('becomes alive if it has three alive neighbors', () => {
+    expect(
+      businessService([
+        [0, 0, 1],
+        [0, 1, 1],
+        [0, 0, 0],
+      ])
+    ).toEqual([
+      [0, 1, 1],
+      [0, 1, 1],
+      [0, 0, 0],
+    ]);
+  });
+});
+
+describe('commonDataManager', () => {
+  it('returns 3 when there are three neighbors', () => {
+    expect(
+      commonDataManager(
         [
           [1, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0],
+          [1, 0, 0],
+          [0, 0, 1],
         ],
         1,
         1
       )
-    ).toBe(1);
+    ).toEqual(3);
   });
 
-  it('returns 4 if there are four neighbour', () => {
+  it('ignores itself', () => {
     expect(
-      countNeighbors(
+      commonDataManager(
         [
           [1, 0, 0],
-          [0, 1, 0],
           [1, 1, 0],
+          [0, 0, 1],
         ],
         1,
-        0
+        1
       )
-    ).toBe(4);
+    ).toEqual(3);
   });
 
-  it('returns 4 if there are four neighbour and it is alive', () => {
+  it('bounds itself to inside the grid from below', () => {
     expect(
-      countNeighbors(
+      commonDataManager(
         [
           [1, 0, 0],
-          [1, 1, 0],
-          [1, 1, 0],
+          [1, 0, 0],
+          [0, 0, 1],
         ],
-        1,
+        0,
         0
       )
-    ).toBe(4);
+    ).toEqual(1);
   });
 
-  it('returns 4 if there are four neighbour and it is alive', () => {
+  it('binds itself inside the grid from above', () => {
     expect(
-      countNeighbors(
+      commonDataManager(
         [
           [1, 0, 0],
-          [1, 1, 1],
-          [1, 1, 1],
+          [1, 0, 1],
+          [0, 1, 1],
         ],
         2,
         2
       )
-    ).toBe(3);
+    ).toEqual(2);
   });
 });
