@@ -1,0 +1,9 @@
+{
+  "name": "dofus-hdv-history",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dofus-hdv-history/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project dofus-hdv-history --web",
+  "targets": {}
+}
